@@ -6,10 +6,10 @@ object Dependencies {
   lazy val gatling: Seq[ModuleID] = Seq(
     "io.gatling.highcharts" % "gatling-charts-highcharts",
     "io.gatling" % "gatling-test-framework"
-  ).map(_ % "3.7.4" % Test)
+  ).map(_ % "3.8.3" % Test)
 
   lazy val picatinny: Seq[ModuleID] = Seq(
-    "ru.tinkoff" %% "gatling-picatinny" % "0.9.0",
+    "ru.tinkoff" %% "gatling-picatinny" % "0.11.2",
   )
 }
 
