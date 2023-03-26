@@ -24,7 +24,8 @@ class CommonScenario {
       20.0 -> exec(Actions.getCompanies),
       80.0 -> exec(Actions.getJob)
     )
-    .exec(Actions.search)
     .exec(Actions.subs)
+    .exec(Actions.search)
+
 
 }
