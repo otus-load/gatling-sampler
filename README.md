@@ -26,3 +26,19 @@ Report:
 ```shell
 sbt "Gatling/lastReport"
 ```
+
+### Docker
+
+Build docker image
+
+```shell
+docker build -t otus/gatling:1.0.1 .
+``` 
+
+Start Gatling test:
+
+```shell
+docker run -it --rm otus/gatling:1.0.0 sbt "Gatling/test *.Debug"
+
+docker run -it --rm otus/gatling:1.0.0 sbt "Gatling/test computerdatabase.BasicSimulation"
+```

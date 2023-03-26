@@ -20,17 +20,17 @@ object Actions {
     .queryParam("mode", "ajax")
     .check(status not 500)
 
-  val search: HttpRequestBuilder = http("search")
+  val subs: HttpRequestBuilder = http("getSubs")
+    .get("/subs")
+    .queryParam("mode", "ajax")
+    .check(regex("""Ещё (\d+)&nbsp;подписок""").is("2006"))
+    .check(regex("""Ещё (\d+)&nbsp;подписок""").saveAs("counter"))
+
+  val search: HttpRequestBuilder = http("search #{counter}")
     .get("/search/v2/content/relevant")
     .queryParam("mode", "ajax")
     .queryParam("query", "#{word}")
     .check(status not 500)
     .check(regex("""l-page l-page--header-content-sidebar l-mb-12""").exists)
-
-  val subs: HttpRequestBuilder = http("getSubs")
-    .get("/subs")
-    .queryParam("mode", "ajax")
-    .check(regex("""Ещё \d+&nbsp;(\w+)""").is("378"))
-    .check(regex("""Ещё (\d+)&nbsp;подписки""").saveAs("counter"))
 
 }
