@@ -11,21 +11,23 @@ object CommonScenario{
 
 class CommonScenario {
 
-  val groupMy: ChainBuilder = group("my group"){
-    exec(Actions.getJob)
-      .exec(Actions.search)
+  val loginGroup: ChainBuilder = group("my login"){
+    exec(Actions.login)
+      .exec(Actions.check)
+      .exec(Actions.notifications)
   }
 
   val scn: ScenarioBuilder = scenario("Common scenario")
     .feed(myFeed)
-    .exec(groupMy)
+    .feed(users)
     .exec(Actions.getMainPage)
+    .pause(1,3)
     .randomSwitch(
       20.0 -> exec(Actions.getCompanies),
       80.0 -> exec(Actions.getJob)
     )
     .exec(Actions.subs)
     .exec(Actions.search)
-
+    .exec(loginGroup)
 
 }

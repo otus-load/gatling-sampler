@@ -33,4 +33,21 @@ object Actions {
     .check(status not 500)
     .check(regex("""l-page l-page--header-content-sidebar l-mb-12""").exists)
 
+  val login: HttpRequestBuilder = http("login")
+    .post("https://api.vc.ru/v3.0/auth/simple/login")
+    .formParam("values[email]", "#{login}")
+    .formParam("values[password]", "#{password}")
+    .formParam("mode", "raw")
+    .check(jsonPath("$.rm").is("successfull"))
+
+  val check: HttpRequestBuilder = http("check")
+    .get("/auth/check")
+    .queryParam("mode", "raw")
+    .check(jsonPath("$.rc").is("200"))
+
+  val notifications: HttpRequestBuilder = http("notifications")
+    .get("/notifications/unread-count")
+    .queryParam("mode", "raw")
+    .check(jsonPath("$.rc").is("200"))
+
 }
