@@ -23,8 +23,8 @@ object Actions {
   val subs: HttpRequestBuilder = http("getSubs")
     .get("/subs")
     .queryParam("mode", "ajax")
-    .check(regex("""Ещё (\d+)&nbsp;подписок""").is("2006"))
-    .check(regex("""Ещё (\d+)&nbsp;подписок""").saveAs("counter"))
+    .check(regex("""Ещё (\d+)&nbsp;подпис\W+<""").is("884"))
+    .check(regex("""Ещё (\d+)&nbsp;подпис\W+<""").saveAs("counter"))
 
   val search: HttpRequestBuilder = http("search #{counter}")
     .get("/search/v2/content/relevant")
@@ -38,6 +38,7 @@ object Actions {
     .formParam("values[email]", "#{login}")
     .formParam("values[password]", "#{password}")
     .formParam("mode", "raw")
+//    .body(ElFileBody("raw.json")).asJson // DEMO
     .check(jsonPath("$.rm").is("successfull"))
 
   val check: HttpRequestBuilder = http("check")
