@@ -34,7 +34,7 @@ sbt "Gatling/lastReport"
 Build docker image
 
 ```shell
-docker build -t otus/gatling:1.0.1 .
+docker build -t otus/gatling:1.0.0 .
 ``` 
 
 Start Gatling test:
