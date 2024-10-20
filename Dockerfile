@@ -1,7 +1,6 @@
 FROM hseeberger/scala-sbt:11.0.13_1.6.1_2.13.8
 WORKDIR /app
 COPY project/build.properties ./project/build.properties
-COPY project/Dependencies.scala ./project/Dependencies.scala
 COPY project/plugins.sbt ./project/plugins.sbt
 COPY src ./src
 COPY build.sbt .
