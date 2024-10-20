@@ -23,11 +23,7 @@ sbt "Gatling/testOnly vc.Debug"
 sbt "Gatling/testOnly *.Debug"
 ```
 
-Report:
-
-```shell
-sbt "Gatling/lastReport"
-```
+More information [link](https://docs.gatling.io/reference/integrations/build-tools/sbt-plugin/#usage)
 
 ### Docker
 
