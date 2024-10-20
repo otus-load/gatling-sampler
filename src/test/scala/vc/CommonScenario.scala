@@ -13,8 +13,7 @@ class CommonScenario {
 
   val loginGroup: ChainBuilder = group("my login"){
     exec(Actions.login)
-      .exec(Actions.check)
-      .exec(Actions.notifications)
+      .exec(Actions.me)
   }
 
   val scn: ScenarioBuilder = scenario("Common scenario")
@@ -23,11 +22,11 @@ class CommonScenario {
     .exec(Actions.getMainPage)
     .pause(1,3)
     .randomSwitch(
-      20.0 -> exec(Actions.getCompanies),
-      80.0 -> exec(Actions.getJob)
+      20.0 -> exec(Actions.getPopular),
+      80.0 -> exec(Actions.getNew)
     )
-    .exec(Actions.subs)
-    .exec(Actions.search)
+    .exec(Actions.getCourses)
+    .exec(Actions.discovery)
     .exec(loginGroup)
 
 }
