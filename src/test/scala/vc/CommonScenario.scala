@@ -1,8 +1,7 @@
 package vc
 
 import io.gatling.core.Predef._
-import io.gatling.core.structure.{ChainBuilder, ScenarioBuilder}
-import io.gatling.http.Predef._
+import io.gatling.core.structure._
 import vc.Feeders._
 
 object CommonScenario{
@@ -26,7 +25,13 @@ class CommonScenario {
       80.0 -> exec(Actions.getNew)
     )
     .exec(Actions.getCourses)
-    .exec(Actions.discovery)
-    .exec(loginGroup)
+    .repeat(3)(
+      exec(Actions.discovery)
+    )
+    .exec(
+      tryMax(2)(
+        loginGroup
+      )
+    )
 
 }
