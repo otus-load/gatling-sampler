@@ -25,7 +25,7 @@ class CommonScenario {
       80.0 -> exec(Actions.getNew)
     )
     .exec(Actions.getCourses)
-    .repeat(3)(
+    .repeat(3, "i")(
       exec(Actions.discovery)
     )
     .exec(

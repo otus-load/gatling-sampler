@@ -12,7 +12,7 @@ object Actions {
 
   val getPopular: HttpRequestBuilder = http("getPopular")
     .get("/popular")
-    .check(status is 200)
+    .check(css("a.sidebar-item:nth-child(1) > div:nth-child(2)").is("Популярное"))
 
   val getNew: HttpRequestBuilder = http("getNew")
     .get("/new")
@@ -24,7 +24,7 @@ object Actions {
     .check(regex("""(\d+) курсов""").is("536"))
     .check(regex("""(\d+) курсов""").saveAs("counter"))
 
-  val discovery: HttpRequestBuilder = http("discovery - #{words}")
+  val discovery: HttpRequestBuilder = http("discovery - #{words} - #{i}")
     .get("/discovery")
     .check(status.not(500))
     .queryParam("q", "#{words}")
