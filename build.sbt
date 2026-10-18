@@ -1,6 +1,6 @@
 enablePlugins(GatlingPlugin)
 
-scalaVersion := "2.13.18"
+scalaVersion := "3.10.0"
 
 scalacOptions := Seq(
   "-encoding", "UTF-8", "-release:8", "-deprecation",
